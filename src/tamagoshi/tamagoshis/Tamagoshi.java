@@ -19,7 +19,6 @@ public class Tamagoshi {
     protected java.util.Random rand = new Random();
     private List<String> listNoms = Arrays.asList("Tarbek", "Bulbizarre", "Salameche", "Carapuce", "Pikachu", "Racaillou", "Mew", "Mewtwo");
 
-
     /**
      * Constructeur de la classe Tamagoshi. Le seul paramètre à donner est le nom, le reste est déjà défini
      * ou aléatoire.
