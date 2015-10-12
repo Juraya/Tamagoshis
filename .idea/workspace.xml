@@ -6,9 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad56d687-8dab-4934-af5e-73387dc35e72" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/jeu/TamaGame.class" afterPath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/jeu/TamaGame.class" />
+    <list default="true" id="ad56d687-8dab-4934-af5e-73387dc35e72" name="Default" comment="Corrections mineures">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/tamagoshis/GrosJoueur.class" afterPath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/tamagoshis/GrosJoueur.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/tamagoshis/GrosMangeur.class" afterPath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/tamagoshis/GrosMangeur.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/tamagoshis/Tamagoshi.class" afterPath="$PROJECT_DIR$/out/production/Tamagoshi/tamagoshi/tamagoshis/Tamagoshi.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java" afterPath="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosMangeur.java" afterPath="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosMangeur.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tamagoshi/jeu/TamaGame.java" afterPath="$PROJECT_DIR$/src/tamagoshi/jeu/TamaGame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tamagoshi/tamagoshis/Tamagoshi.java" afterPath="$PROJECT_DIR$/src/tamagoshi/tamagoshis/Tamagoshi.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -37,8 +40,8 @@
       <file leaf-file-name="Tamagoshi.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/Tamagoshi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38651684">
-              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+            <state vertical-scroll-proportion="1.8988764">
+              <caret line="67" column="81" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+              <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -60,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosMangeur.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -70,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/src/tamagoshi/jeu/TamaGame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,11 +113,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/tamagoshi/tamagoshis/Main.java" />
         <option value="$PROJECT_DIR$/src/tamagoshi/util/Utilisateur.java" />
-        <option value="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java" />
-        <option value="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosMangeur.java" />
         <option value="$PROJECT_DIR$/src/tamagoshi/jeu/Main.java" />
+        <option value="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java" />
         <option value="$PROJECT_DIR$/src/tamagoshi/jeu/TamaGame.java" />
         <option value="$PROJECT_DIR$/src/tamagoshi/tamagoshis/Tamagoshi.java" />
+        <option value="$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosMangeur.java" />
       </list>
     </option>
   </component>
@@ -619,7 +622,7 @@
       <workItem from="1444595288804" duration="3400000" />
       <workItem from="1444651613102" duration="1714000" />
       <workItem from="1444655845670" duration="472000" />
-      <workItem from="1444676834637" duration="1396000" />
+      <workItem from="1444676834637" duration="2599000" />
     </task>
     <task id="LOCAL-00001" summary="Correction TamaGame">
       <created>1444677499450</created>
@@ -627,11 +630,17 @@
       <option name="project" value="LOCAL" />
       <updated>1444677499450</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Correction constructeur : limites du tableau de noms">
+      <created>1444678260716</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1444678260716</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36685000" />
+    <option name="totallyTimeSpent" value="37888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -676,7 +685,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Correction TamaGame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correction TamaGame" />
+    <MESSAGE value="Correction constructeur : limites du tableau de noms" />
+    <MESSAGE value="Corrections mineures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrections mineures" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1094,14 +1105,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tamagoshi/jeu/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1113,7 +1116,7 @@
     <entry file="file://$PROJECT_DIR$/src/tamagoshi/jeu/TamaGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1123,15 +1126,23 @@
     <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosMangeur.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/GrosJoueur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tamagoshi/tamagoshis/Tamagoshi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38651684">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+        <state vertical-scroll-proportion="1.8988764">
+          <caret line="67" column="81" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

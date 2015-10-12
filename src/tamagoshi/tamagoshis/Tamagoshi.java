@@ -65,7 +65,7 @@ public class Tamagoshi {
         }
 
         else if (this.getEnergy() >= 5 && this.getFun() < 5) {
-            System.out.println(this.getName() + " : " + "Je n'ai pas faim mais je m'ennuie !");
+            System.out.println(this.getName() + " : " + "Je n'ai pas spécialement faim mais je m'ennuie !");
             return false;
         }
 
@@ -105,15 +105,12 @@ public class Tamagoshi {
     public boolean consommeEnergie() {
         if (this.energy > 0 && this.fun > 0) {
             this.energy = this.energy - 1;
-            //System.err.println(this.getName()+" perd 1 point d'energie.");
-
             this.fun = this.fun - 1;
-            //System.err.println(this.getName()+" perd 1 point de fun.");
             return true;
         }
 
         else {
-            System.out.println(this.getName() + " : " + "Je suis KO !");
+            System.out.println(this.getName() + " : Je suis KO !");
             return false;
         }
     }

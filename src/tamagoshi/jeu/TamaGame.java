@@ -131,15 +131,13 @@ public class TamaGame {
             Iterator<Tamagoshi> iterator = tamaActuel.iterator();
             while (iterator.hasNext()) {
                 Tamagoshi atamActuel = iterator.next();
-                System.out.println(atamActuel.parle());
-
-                // On consomme l'energie et on check si les PV atteignent 0.
-                if (!atamActuel.consommeEnergie()) {
+                atamActuel.consommeEnergie();
+                if ( (atamActuel.getFun() <= 0) || (atamActuel.getEnergy() <= 0) ) {
                     System.err.println(atamActuel.getName() + " EST KO ! NOOOOOOON !");
                     iterator.remove();
                     break;
                 }
-                System.out.println();
+                System.out.println(atamActuel.parle());
             }
 
             if (tamaActuel.size() == 0) {
@@ -151,7 +149,6 @@ public class TamaGame {
             else {
 
             // Partie manger
-
                 afficherFaim();
                 String choix = Utilisateur.saisieClavier();
                 assert choix != null;

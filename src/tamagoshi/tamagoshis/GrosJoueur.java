@@ -27,7 +27,7 @@ public class GrosJoueur extends Tamagoshi {
         }
 
         else {
-            System.out.println(this.getName() + " : " + "Je suis KO !");
+            System.out.println(this.getName() + " : Je suis KO !");
             return false;
         }
     }

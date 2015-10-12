@@ -12,7 +12,7 @@ public class GrosMangeur extends Tamagoshi {
      */
     public GrosMangeur() {
 
-    };
+    }
 
     /**
      * Méthode de consommation de ressources spécifique au gros mangeur : il perd 2 points de vie par tour.
@@ -27,7 +27,7 @@ public class GrosMangeur extends Tamagoshi {
         }
 
         else {
-            System.out.println(this.getName() + " : " + "Je suis KO !");
+            System.out.println(this.getName() + " : Je suis KO !");
             return false;
         }
     }
