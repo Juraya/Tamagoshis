@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Tamagoshi:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tamagoshi_jar</output-path>
+    <root id="archive" name="Tamagoshi.jar">
+      <element id="module-output" name="Tamagoshi" />
+    </root>
+  </artifact>
+</component>
