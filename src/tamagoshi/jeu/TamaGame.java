@@ -39,6 +39,24 @@ public class TamaGame {
         System.out.println("Difficulte : "+tamaDepart.size());
     }
 
+    public void afficherFun() {
+        System.out.println("Jouer avec quel Tamagoshi ?");
+        for (Tamagoshi aTamaActuel : tamaActuel) {
+            System.out.println("************************");
+            System.out.println( "* " + tamaActuel.indexOf(aTamaActuel) + " " + aTamaActuel.getName() + " FUN : " + aTamaActuel.getFun() + " / " + aTamaActuel.getFunMax() + " *" );
+            System.out.println("************************");
+        }
+    }
+
+    public void afficherFaim() {
+        System.out.println("Nourrir quel Tamagoshi ?");
+        for (Tamagoshi aTamaActuel : tamaActuel) {
+            System.out.println("************************");
+            System.out.println( "* " + tamaActuel.indexOf(aTamaActuel) + " " + aTamaActuel.getName() + " HP : " + aTamaActuel.getEnergy() + " / " + aTamaActuel.getMaxEnergy() + "  *" );
+            System.out.println("************************");
+        }
+    }
+
     /**
      * Constructeur de la partie : "Tamagame".
      * Convertit les listes de Tamagoshis en Arraylist, afin de mieux les manipuler.
@@ -133,32 +151,20 @@ public class TamaGame {
             else {
 
             // Partie manger
-                System.out.println("Nourrir quel Tamagoshi ?");
 
-            for (Tamagoshi aTamaActuel : tamaActuel) {
-                System.out.println("************************");
-                System.out.println( "* " + tamaActuel.indexOf(aTamaActuel) + " " + aTamaActuel.getName() + " HP : " + aTamaActuel.getEnergy() + " / " + aTamaActuel.getMaxEnergy() + "  *" );
-                System.out.println("************************");
-            }
-
-                String choixNourri = Utilisateur.saisieClavier();
-                assert choixNourri != null;
-                int choixNourriInt = Integer.parseInt(choixNourri);
-                tamaActuel.get(choixNourriInt).mange();
+                afficherFaim();
+                String choix = Utilisateur.saisieClavier();
+                assert choix != null;
+                int choixInt = Integer.parseInt(choix);
+                tamaActuel.get(choixInt).mange();
 
             // Partie jouer
-                System.out.println("Jouer avec quel Tamagoshi ?");
-
-            for (Tamagoshi aTamaActuel : tamaActuel) {
-                System.out.println("************************");
-                System.out.println( "* " + tamaActuel.indexOf(aTamaActuel) + " " + aTamaActuel.getName() + " FUN : " + aTamaActuel.getFun() + " / " + aTamaActuel.getFunMax() + " *" );
-                System.out.println("************************");
+                afficherFun();
+                choix = Utilisateur.saisieClavier();
+                assert choix != null;
+                choixInt = Integer.parseInt(choix);
+                tamaActuel.get(choixInt).jouer();
             }
-                String choixJouer = Utilisateur.saisieClavier();
-                assert choixJouer != null;
-                int choixJouerInt = Integer.parseInt(choixJouer);
-                tamaActuel.get(choixJouerInt).jouer();
-        }
         }
         /**
          * En fin d'algo, si la collection de Tamagoshis n'est pas vide, affiche le score final définit par le nombre de
@@ -170,7 +176,7 @@ public class TamaGame {
             System.out.println("Le jeu est termine !");
 
             // On lance la méthode d'annonce du résultat
-            this.resultat();
+            resultat();
         }
     }
 }

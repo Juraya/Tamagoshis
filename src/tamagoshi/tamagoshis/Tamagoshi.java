@@ -34,7 +34,7 @@ public class Tamagoshi {
     }
 
     public String pickName() {
-        return listNoms.get(jetDes(1,8));
+        return listNoms.get(jetDes(0,7));
     }
 
     /**
