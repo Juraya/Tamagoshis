@@ -39,29 +39,13 @@ public class TamaGame {
         System.out.println("Difficulte : "+tamaDepart.size());
     }
 
-    public List<Tamagoshi> getTamaDepart() {
-        return tamaDepart;
-    }
-
-    public void setTamaDepart(List<Tamagoshi> tamaDepart) {
-        this.tamaDepart = tamaDepart;
-    }
-
-    public List<Tamagoshi> getTamaActuel() {
-        return tamaActuel;
-    }
-
-    public void setTamaActuel(List<Tamagoshi> tamaActuel) {
-        this.tamaActuel = tamaActuel;
-    }
-
     /**
      * Constructeur de la partie : "Tamagame".
      * Convertit les listes de Tamagoshis en Arraylist, afin de mieux les manipuler.
      */
     public TamaGame() {
-        this.tamaDepart = new ArrayList<Tamagoshi>();
-        this.tamaActuel = new ArrayList<Tamagoshi>();
+        this.tamaDepart = new ArrayList<>();
+        this.tamaActuel = new ArrayList<>();
         initialisation();
     }
 
@@ -185,6 +169,7 @@ public class TamaGame {
             // Fin du jeu
             System.out.println("Le jeu est termine !");
 
+            // On lance la méthode d'annonce du résultat
             this.resultat();
         }
     }
