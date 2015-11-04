@@ -9,14 +9,41 @@ import java.util.Random;
  * Classe Tamagoshi, permettant la création et manipulation des Tamagoshis.
  */
 public class Tamagoshi {
+    /**
+     * Age du Tamagoshi
+     */
     protected int age;
+    /**
+     * Energie maximale du Tamagoshi
+     */
     protected int maxEnergy;
+    /**
+     * Energie actuelle du Tamagoshi
+     */
     protected int energy;
+    /**
+     * Amusement actuel du Tamagoshi
+     */
     protected int fun;
+    /**
+     * Amusement maximal du Tamagoshi
+     */
     protected int funMax;
+    /**
+     * Nom du Tamagoshi
+     */
     protected String name;
+    /**
+     * Temps de vie du Tamagoshi
+     */
     protected static int lifeTime = 10;
+    /**
+     * Variable contenant la génération d'aléatoire
+     */
     protected java.util.Random rand = new Random();
+    /**
+     * Liste de noms destinée à la création aléatoire
+     */
     private List<String> listNoms = Arrays.asList("Tarbek", "Bulbizarre", "Salameche", "Carapuce", "Pikachu", "Racaillou", "Mew", "Mewtwo");
 
     /**
