@@ -7,7 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad56d687-8dab-4934-af5e-73387dc35e72" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\Users\Julien\Documents\GitHub\Tamagoshis\out\artifacts\Tamagoshi_jar\Tamagoshi.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Tamagoshi_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Tamagoshi_jar.xml" />
     </list>
     <ignored path="Tamagoshi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -618,7 +619,7 @@
       <workItem from="1444655845670" duration="472000" />
       <workItem from="1444676834637" duration="4894000" />
       <workItem from="1446470100307" duration="8000" />
-      <workItem from="1446632299136" duration="439000" />
+      <workItem from="1446632299136" duration="768000" />
     </task>
     <task id="LOCAL-00001" summary="Correction TamaGame">
       <created>1444677499450</created>
@@ -666,7 +667,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40630000" />
+    <option name="totallyTimeSpent" value="40959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
