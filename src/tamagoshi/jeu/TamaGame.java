@@ -12,7 +12,13 @@ import java.util.*;
  * Classe définissant la partie.
  */
 public class TamaGame {
+    /**
+     * Tableau de tamagoshis initial, servant de comparaison
+     */
     private List<Tamagoshi> tamaDepart;
+    /**
+     * Tableau de tamagoshis actuel, servant à être édité
+     */
     private List<Tamagoshi> tamaActuel;
 
     /**
