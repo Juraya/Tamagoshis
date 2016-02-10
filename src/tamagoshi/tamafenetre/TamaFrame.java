@@ -1,42 +1,144 @@
 package tamagoshi.tamafenetre;
 
+import tamagoshi.tamagoshis.Tamagoshi;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Julien on 27/01/2016.
  */
-public class TamaFrame {
+public class TamaFrame extends JFrame {
 
-    public TamaFrame() {
+    private Tamagoshi monTama;
+    private ImageIcon iconeFaim = new ImageIcon(new ImageIcon(getClass().getResource("../../img/hungry.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeEnnui = new ImageIcon(new ImageIcon(getClass().getResource("../../img/bored.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeJoie = new ImageIcon(new ImageIcon(getClass().getResource("../../img/happy.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeKO = new ImageIcon(new ImageIcon(getClass().getResource("../../img/KO.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeAttention = new ImageIcon(new ImageIcon(getClass().getResource("../../img/warning.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeYoupi = new ImageIcon(new ImageIcon(getClass().getResource("../../img/overjoyed.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
 
-        JFrame fenetre = new JFrame();
-        fenetre.setSize(400, 400);
-        ImageIcon icone = new ImageIcon(new ImageIcon(getClass().getResource("../../img/hungry.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-        ImageIcon bulleImg = new ImageIcon(new ImageIcon(getClass().getResource("../../img/bulle_2.png")).getImage().getScaledInstance(150, 80, Image.SCALE_DEFAULT));
+    private JButton nourrir = new JButton();
+    private JButton jouer = new JButton();
+    private JLabel bulle = new JLabel();
 
-        fenetre.add(new JLabel(icone));
+    public TamaFrame(Tamagoshi tamagoshi) {
+
+        /**
+         * On fait la référence au Tamagoshi
+         */
+        this.setMonTama(tamagoshi);
+        tamagoshi.setMaFrame(this);
+
+        this.setSize(400, 400);
+        ImageIcon bulleImg = new ImageIcon(new ImageIcon(getClass().getResource("../../img/bulle_2.png")).getImage().getScaledInstance(390, 80, Image.SCALE_DEFAULT));
         Font myFont = new Font("Serif", Font.BOLD, 18);
 
         JPanel boutons = new JPanel();
-        JButton nourrir = new JButton();
         nourrir.setText("Nourrir");
-        JButton jouer = new JButton();
+
+
         jouer.setText("Jouer");
         boutons.add(nourrir);
         boutons.add(jouer);
-        fenetre.add(boutons, BorderLayout.SOUTH);
+        this.add(boutons, BorderLayout.SOUTH);
 
         JPanel etat = new JPanel();
-        JLabel bulle = new JLabel();
+
+
         bulle.setIcon(bulleImg);
-        bulle.setText("J'ai faim !");
+        bulle.setText(this.getMonTama().getEtat());
         bulle.setFont(myFont);
         bulle.setHorizontalTextPosition(SwingConstants.CENTER);
         etat.add(bulle);
-        fenetre.add(etat, BorderLayout.NORTH);
+        this.add(etat, BorderLayout.NORTH);
 
-        fenetre.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        fenetre.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setVisible(true);
+
+        this.nourrir.addActionListener(e -> getMonTama().mange());
+        this.jouer.addActionListener(e -> getMonTama().jouer());
+    }
+
+    public Tamagoshi getMonTama() {
+        return monTama;
+    }
+
+    public void setMonTama(Tamagoshi monTama) {
+        this.monTama = monTama;
+    }
+
+    public ImageIcon getIconeFaim() {
+        return iconeFaim;
+    }
+
+    public void setIconeFaim(ImageIcon iconeFaim) {
+        this.iconeFaim = iconeFaim;
+    }
+
+    public ImageIcon getIconeEnnui() {
+        return iconeEnnui;
+    }
+
+    public void setIconeEnnui(ImageIcon iconeEnnui) {
+        this.iconeEnnui = iconeEnnui;
+    }
+
+    public ImageIcon getIconeJoie() {
+        return iconeJoie;
+    }
+
+    public void setIconeJoie(ImageIcon iconeJoie) {
+        this.iconeJoie = iconeJoie;
+    }
+
+    public ImageIcon getIconeKO() {
+        return iconeKO;
+    }
+
+    public void setIconeKO(ImageIcon iconeKO) {
+        this.iconeKO = iconeKO;
+    }
+
+    public JButton getNourrir() {
+        return nourrir;
+    }
+
+    public void setNourrir(JButton nourrir) {
+        this.nourrir = nourrir;
+    }
+
+    public JButton getJouer() {
+        return jouer;
+    }
+
+    public void setJouer(JButton jouer) {
+        this.jouer = jouer;
+    }
+
+    public JLabel getBulle() {
+        return bulle;
+    }
+
+    public void setBulle(JLabel bulle) {
+        this.bulle = bulle;
+    }
+
+    public ImageIcon getIconeAttention() {
+        return iconeAttention;
+    }
+
+    public void setIconeAttention(ImageIcon iconeAttention) {
+        this.iconeAttention = iconeAttention;
+    }
+
+    public ImageIcon getIconeYoupi() {
+        return iconeYoupi;
+    }
+
+    public void setIconeYoupi(ImageIcon iconeYoupi) {
+        this.iconeYoupi = iconeYoupi;
     }
 }

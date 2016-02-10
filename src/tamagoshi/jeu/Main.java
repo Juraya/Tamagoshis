@@ -1,13 +1,13 @@
 package tamagoshi.jeu;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import tamagoshi.tamafenetre.TamaFrame;
-
+import tamagoshi.tamagoshis.Tamagoshi;
 import javax.sound.sampled.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 
 /**
  * Created by Julien on 05/10/2015.
@@ -18,9 +18,12 @@ public class Main {
         // On créé une nouvelle partie.
         //TamaGame jeu = new TamaGame();
 
+        /**
+         * Lancement de la musique
+         */
         AudioInputStream audioInputStream = null;
         try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File(Main.class.getResource("../../music/pokemon.wav").getFile()));
+            audioInputStream = AudioSystem.getAudioInputStream(new File(Main.class.getResource("/music/pokemon.wav").getFile()));
         } catch (UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
@@ -36,7 +39,19 @@ public class Main {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
 
-        new TamaFrame();
+        Tamagoshi tamatest = new Tamagoshi();
+
+        TamaFrame frameTest = new TamaFrame(tamatest);
+        tamatest.parle();
+
+        //tamatest.getMaFrame().getContentPane().remove(2);
+
+        //tamatest.setEnergy(0);
+        //tamatest.consommeEnergie();
+        //System.out.println(tamatest.getEnergy());
+
+
+
 
 
         // On lance cette partie.

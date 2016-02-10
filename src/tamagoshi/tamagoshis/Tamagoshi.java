@@ -1,18 +1,25 @@
 package tamagoshi.tamagoshis;
 
+import tamagoshi.tamafenetre.TamaFrame;
+
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 /**
  * Created by Julien on 05/10/2015.
- * Classe Tamagoshi, permettant la crÈation et manipulation des Tamagoshis.
+ * Classe Tamagoshi, permettant la cr√©ation et manipulation des Tamagoshis.
  */
 public class Tamagoshi {
     /**
      * Age du Tamagoshi
      */
     protected int age;
+    /**
+     * Etat actuel du Tamagoshi
+     */
+    protected String etat = "J'arrive !";
     /**
      * Energie maximale du Tamagoshi
      */
@@ -38,17 +45,21 @@ public class Tamagoshi {
      */
     protected static int lifeTime = 10;
     /**
-     * Variable contenant la gÈnÈration d'alÈatoire
+     * Variable contenant la g√©n√©ration d'al√©atoire
      */
     protected java.util.Random rand = new Random();
     /**
-     * Liste de noms destinÈe ‡ la crÈation alÈatoire
+     * R√©f√©rence √† la frame du Tamagoshi
+     */
+    protected TamaFrame maFrame;
+    /**
+     * Liste de noms destin√©e √† la cr√©ation al√©atoire
      */
     private List<String> listNoms = Arrays.asList("Tarbek", "Bulbizarre", "Salameche", "Carapuce", "Pikachu", "Racaillou", "Mew", "Mewtwo");
 
     /**
-     * Constructeur de la classe Tamagoshi. Le seul paramËtre ‡ donner est le nom, le reste est dÈj‡ dÈfini
-     * ou alÈatoire.
+     * Constructeur de la classe Tamagoshi. Le seul param√®tre √† donner est le nom, le reste est d√©j√† d√©fini
+     * ou al√©atoire.
      */
     public Tamagoshi() {
         this.name = pickName();
@@ -57,6 +68,7 @@ public class Tamagoshi {
         this.energy = jetDes(3,7);
         this.funMax = jetDes(5,9);
         this.fun = jetDes(3,7);
+
     }
 
     public String pickName() {
@@ -65,68 +77,82 @@ public class Tamagoshi {
 
     /**
      *
-     * @return Renvoie un boolean. True : le Tamagoshi s'est amusÈ. False : il n'a pas besoin de s'amuser.
+     * @return Renvoie un boolean. True : le Tamagoshi s'est amus√©. False : il n'a pas besoin de s'amuser.
      */
     public boolean jouer() {
         if(this.getFun() < this.getFunMax()) {
-            System.out.println(this.getName() + " : " + "C'est le putain de fun !");
+            this.getMaFrame().getBulle().setText(this.etat="Je m'amuse trop !");
+            this.getMaFrame().getContentPane().repaint();
             this.fun += jetDes(1,3);
             return true;
         }
         else {
-            System.out.println(this.getName() + " : " + "Pas envie de jouer.");
+            this.getMaFrame().getBulle().setText(this.etat="Pas envie de jouer.");
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
     }
 
     /**
-     * MÈthode parler : retourne un Ètat sous forme de println. Au dessus de 4 d'Ènergie, le Tamagoshi est heureux.
+     * M√©thode parler : retourne un √©tat sous forme de println. Au dessus de 4 d'√©nergie, le Tamagoshi est heureux.
      * Sinon, il a faim.
      * @return Renvoie un boolean. True : Il est heureux. False : Il a faim et/ou s'ennuie.
      */
     public boolean parle() {
         if (this.getEnergy() >= 5 && this.getFun() >= 5 ) {
-            System.out.println(this.getName() + " : " + "Je suis heureux !");
+            this.getMaFrame().getBulle().setText(this.etat="Je suis heureux !");
+            this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeYoupi()));
+            this.getMaFrame().repaint();
             return true;
         }
 
         else if (this.getEnergy() >= 5 && this.getFun() < 5) {
-            System.out.println(this.getName() + " : " + "Je n'ai pas spÈcialement faim mais je m'ennuie !");
+            this.getMaFrame().getBulle().setText(this.etat="J'ai pas faim mais je m'ennuie !");
+            this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeEnnui()));
+            this.getMaFrame().repaint();
             return false;
         }
 
         else if (this.getEnergy() < 5 && this.getFun() >= 5) {
-            System.out.println(this.getName() + " : " + "J'ai faim mais je m'amuse bien.");
+            this.getMaFrame().getBulle().setText(this.etat="J'ai faim mais je m'amuse bien.");
+            this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeAttention()));
+            this.getMaFrame().repaint();
             return false;
         }
 
         else {
-            System.out.println(this.getName() + " : " + "J'ai faim et je m'ennuie !");
+            this.getMaFrame().getBulle().setText(this.etat="J'ai faim et je m'ennuie !");
+            this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeFaim()));
+            this.getMaFrame().repaint();
             return false;
         }
     }
 
     /**
-     * Methode manger, alimente le Tamagoshi en lui rendant de 1 ‡ 3 points de vie, de maniËre alÈatoire.
-     * Si le Tamagoshi est au maximum de ses points de vie, il dÈclare ne pas avoir faim.
+     * Methode manger, alimente le Tamagoshi en lui rendant de 1 √† 3 points de vie, de mani√®re al√©atoire.
+     * Si le Tamagoshi est au maximum de ses points de vie, il d√©clare ne pas avoir faim.
      * @return Renvoie un boolean. True : Il accepte de manger. False : Il n'a pas faim.
      */
     public boolean mange() {
+        //System.err.println("CLICK MANGER");
+        //System.err.println(this.getEnergy());
         if (this.maxEnergy > this.energy) {
             this.energy += jetDes(1,3);
-            System.out.println(this.getName() + " : " + "Miam !");
+            this.getMaFrame().getBulle().setText(this.etat="Miam !");
+            this.getMaFrame().getContentPane().repaint();
             return true;
         }
 
         else {
-            System.out.println(this.getName() + " : " + "Je n'ai pas faim.");
+            this.getMaFrame().getBulle().setText(this.etat="Je n'ai pas faim.");
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
     }
 
     /**
-     * Methode appellÈe par la boucle de jeu. Retire un point de vie au Tamagoshi.
-     * @return Renvoie un boolean. True : Il perd 1 point d'Ènergie. False : Il est KO.
+     * Methode appell√©e par la boucle de jeu. Retire un point de vie au Tamagoshi.
+     * @return Renvoie un boolean. True : Il perd 1 point d'√©nergie. False : Il est KO.
      */
     public boolean consommeEnergie() {
         if (this.energy > 0 && this.fun > 0) {
@@ -136,7 +162,11 @@ public class Tamagoshi {
         }
 
         else {
-            System.out.println(this.getName() + " : Je suis KO !");
+            this.getMaFrame().getBulle().setText(this.etat="Je suis KO !");
+            this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeKO()));
+            this.getMaFrame().getJouer().setEnabled(false);
+            this.getMaFrame().getNourrir().setEnabled(false);
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
     }
@@ -171,58 +201,58 @@ public class Tamagoshi {
     }
 
     /**
-     * @return Renvoie l'espÈrance de vie du Tamagoshi.
+     * @return Renvoie l'esp√©rance de vie du Tamagoshi.
      */
     protected static int getLifeTime() {
         return lifeTime;
     }
 
     /**
-     * Permet l'Èdition de l'age du Tamagoshi.
-     * @param age Prend un entier en paramËtre pour redÈfinir l'age du Tamagoshi.
+     * Permet l'√©dition de l'age du Tamagoshi.
+     * @param age Prend un entier en param√®tre pour red√©finir l'age du Tamagoshi.
      */
     protected void setAge(int age) {
         this.age = age;
     }
 
     /**
-     * Permet l'Èdition de l'energie maximale du Tamagoshi.
-     * @param maxEnergy Prend un entier en paramËtre pour redÈfinir l'Ènergie maximale du Tamagoshi.
+     * Permet l'√©dition de l'energie maximale du Tamagoshi.
+     * @param maxEnergy Prend un entier en param√®tre pour red√©finir l'√©nergie maximale du Tamagoshi.
      */
     protected void setMaxEnergy(int maxEnergy) {
         this.maxEnergy = maxEnergy;
     }
 
     /**
-     * Permet l'Èdition de l'energie du Tamagoshi.
-     * @param energy Prend un entier en paramËtre pour redÈfinir l'Ènergie du Tamagoshi.
+     * Permet l'√©dition de l'energie du Tamagoshi.
+     * @param energy Prend un entier en param√®tre pour red√©finir l'√©nergie du Tamagoshi.
      */
-    protected void setEnergy(int energy) {
+    public void setEnergy(int energy) {
         this.energy = energy;
     }
 
     /**
-     * Permet l'Èdition du nom du Tamagoshi
-     * @param name Prend un string en paramËtre pour redÈfinir le nom du Tamagoshi.
+     * Permet l'√©dition du nom du Tamagoshi
+     * @param name Prend un string en param√®tre pour red√©finir le nom du Tamagoshi.
      */
     protected void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Permet l'Èdition de l'espÈrance de vie du Tamagoshi
-     * @param lifeTime Prend un entier en paramËtre
+     * Permet l'√©dition de l'esp√©rance de vie du Tamagoshi
+     * @param lifeTime Prend un entier en param√®tre
      */
     protected static void setLifeTime(int lifeTime) {
         Tamagoshi.lifeTime = lifeTime;
     }
 
     /**
-     * Lance un dÈ, avec une limite minimale et maximale sous forme d'entiers. Retourne un entier alÈatoire situÈ entre
-     * les limites entrÈes en paramËtre.
-     * @param min Valeur minimale alÈatoire.
-     * @param max Valeur maximale alÈatoire.
-     * @return Nombre alÈatoire renvoyÈ.
+     * Lance un d√©, avec une limite minimale et maximale sous forme d'entiers. Retourne un entier al√©atoire situ√© entre
+     * les limites entr√©es en param√®tre.
+     * @param min Valeur minimale al√©atoire.
+     * @param max Valeur maximale al√©atoire.
+     * @return Nombre al√©atoire renvoy√©.
      */
     public int jetDes(int min, int max) {
         return rand.nextInt(max - min + 1) + min;
@@ -236,9 +266,9 @@ public class Tamagoshi {
     }
 
     /**
-     * @param fun Prend un entier en paramËtre pour redÈfinir le fun du Tamagoshi.
+     * @param fun Prend un entier en param√®tre pour red√©finir le fun du Tamagoshi.
      */
-    protected void setFun(int fun) {
+    public void setFun(int fun) {
         this.fun = fun;
     }
 
@@ -250,9 +280,25 @@ public class Tamagoshi {
     }
 
     /**
-     * @param funMax Prend un entier en paramËtre pour redÈfinir le fun maximum du Tamagoshi.
+     * @param funMax Prend un entier en param√®tre pour red√©finir le fun maximum du Tamagoshi.
      */
     protected void setFunMax(int funMax) {
         this.funMax = funMax;
+    }
+
+    public TamaFrame getMaFrame() {
+        return maFrame;
+    }
+
+    public void setMaFrame(TamaFrame maFrame) {
+        this.maFrame = maFrame;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 }
