@@ -4,8 +4,6 @@ import tamagoshi.tamagoshis.Tamagoshi;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by Julien on 27/01/2016.
@@ -23,6 +21,7 @@ public class TamaFrame extends JFrame {
     private JButton nourrir = new JButton();
     private JButton jouer = new JButton();
     private JLabel bulle = new JLabel();
+    private JPanel etat = new JPanel();
 
     public TamaFrame(Tamagoshi tamagoshi) {
 
@@ -35,6 +34,8 @@ public class TamaFrame extends JFrame {
         this.setSize(400, 400);
         ImageIcon bulleImg = new ImageIcon(new ImageIcon(getClass().getResource("../../img/bulle_2.png")).getImage().getScaledInstance(390, 80, Image.SCALE_DEFAULT));
         Font myFont = new Font("Serif", Font.BOLD, 18);
+
+        this.add(this.etat, BorderLayout.CENTER);
 
         JPanel boutons = new JPanel();
         nourrir.setText("Nourrir");
@@ -140,5 +141,13 @@ public class TamaFrame extends JFrame {
 
     public void setIconeYoupi(ImageIcon iconeYoupi) {
         this.iconeYoupi = iconeYoupi;
+    }
+
+    public JPanel getEtat() {
+        return etat;
+    }
+
+    public void setEtat(JPanel etat) {
+        this.etat = etat;
     }
 }

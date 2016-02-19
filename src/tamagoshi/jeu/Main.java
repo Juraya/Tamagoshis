@@ -1,6 +1,7 @@
 package tamagoshi.jeu;
 
 import tamagoshi.tamafenetre.TamaFrame;
+import tamagoshi.tamafenetre.TamaMenu;
 import tamagoshi.tamagoshis.Tamagoshi;
 import javax.sound.sampled.*;
 import javax.swing.*;
@@ -8,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Julien on 05/10/2015.
@@ -41,9 +43,31 @@ public class Main {
 
         Tamagoshi tamatest = new Tamagoshi();
 
-        TamaFrame frameTest = new TamaFrame(tamatest);
-        tamatest.parle();
+        //TamaFrame frameTest = new TamaFrame(tamatest);
+        //tamatest.parle();
+        //tamatest.setEnergy(0);
+        //tamatest.consommeEnergie();
 
+        TamaMenu menu = new TamaMenu();
+        /*
+        ArrayList<TamaFrame> tamaTab = new ArrayList<>();
+        int h = 0;
+        int l = 0;
+        for (int i=0; i<10; i++) {
+            if (i>=1) {
+                TamaFrame frameTest = new TamaFrame(tamatest);
+                frameTest.setLocation(h, l);
+                h = h+410;
+
+                tamatest.parle();
+                tamaTab.add(frameTest);
+                if (tamaTab.size()>=5) {
+                    l = l + 410;
+                }
+                frameTest.setLocationRelativeTo(tamaTab.get(i-1));
+            }
+        }
+        */
         //tamatest.getMaFrame().getContentPane().remove(2);
 
         //tamatest.setEnergy(0);
