@@ -15,14 +15,15 @@ import java.util.*;
  * Created by Julien on 17/02/2016.
  */
 public class TamaGameGraphic {
+    private int numeroTour;
     /**
      * Tableau de tamagoshis initial, servant de comparaison
      */
-    private List<Tamagoshi> tamaDepart;
+    public static List<Tamagoshi> tamaDepart;
     /**
      * Tableau de tamagoshis actuel, servant à être édité
      */
-    private List<Tamagoshi> tamaActuel;
+    public static List<Tamagoshi> tamaActuel;
 
     public void resultat() {
         // Recapitulatif des types de Tamagoshis
@@ -46,8 +47,8 @@ public class TamaGameGraphic {
     }
 
     public TamaGameGraphic() {
-        this.tamaDepart = new ArrayList<>();
-        this.tamaActuel = new ArrayList<>();
+        tamaDepart = new ArrayList<>();
+        tamaActuel = new ArrayList<>();
         initialisation();
     }
 
@@ -96,7 +97,7 @@ public class TamaGameGraphic {
                 }
                     TamaFrame frameTest = new TamaFrame(tamatest);
                     frameTest.setLocation(h, l);
-                    h = h + 405;
+                    h = h + 390;
 
                     tamatest.parle();
                     tamaTab.add(frameTest);
@@ -104,7 +105,7 @@ public class TamaGameGraphic {
 
             else {
                 if (compteur==5) {
-                    l = l+405;
+                    l = l + 400;
                     h = 0;
                 }
                 Tamagoshi tamatest = new Tamagoshi();
@@ -117,7 +118,7 @@ public class TamaGameGraphic {
                 }
                     TamaFrame frameTest = new TamaFrame(tamatest);
                     frameTest.setLocation(h, l);
-                    h = h + 405;
+                    h = h + 390;
                     compteur += 1;
 
                     tamatest.parle();
@@ -126,23 +127,57 @@ public class TamaGameGraphic {
 
             for (TamaFrame tama : tamaTab) {
                 tama.getJouer().addActionListener(e -> {
-                    tama.getMonTama().jouer();
-                    for (TamaFrame t : tamaTab) {
-                        t.getJouer().setEnabled(false);
+                    if (tama.getNourrir().isEnabled()) {
+                        tama.getMonTama().jouer();
+                        for (TamaFrame t : tamaTab) {
+                            t.getJouer().setEnabled(false);
+                        }
+                    }
+
+                    else {
+                        for (TamaFrame t : tamaTab) {
+                            t.getJouer().setEnabled(true);
+                            t.getNourrir().setEnabled(true);
+                        }
+                        //this.numeroTour+=1;
+                        //System.err.println(this.numeroTour);
+
                     }
                 });
                 tama.getNourrir().addActionListener(e -> {
-                    tama.getMonTama().mange();
-                    for (TamaFrame t : tamaTab) {
-                        t.getNourrir().setEnabled(false);
+                    if (tama.getJouer().isEnabled()) {
+                        tama.getMonTama().mange();
+                        for (TamaFrame t : tamaTab) {
+                            t.getNourrir().setEnabled(false);
+                        }
+                    } else {
+                        for (TamaFrame t : tamaTab) {
+                            t.getJouer().setEnabled(true);
+                            t.getNourrir().setEnabled(true);
+                        }
+                        this.numeroTour += 1;
+                        System.err.println(this.numeroTour);
+
+                        for (TamaFrame ta : tamaTab) {
+                            if (ta.getMonTama().getEnergy() > 0 && ta.getMonTama().getFun() > 0) {
+                                ta.getMonTama().consommeEnergie();
+                                ta.getMonTama().parle();
+                                System.err.println("Nom : " + ta.getMonTama().getName() + " / Energie : " + ta.getMonTama().getEnergy()
+                                + " / Fun : " + ta.getMonTama().getFun());
+                            }
+                        }
+
                     }
                 });
             }
+
+            this.play();
         }
     }
 
     public void play() {
         System.err.println("Lancement de la partie.");
+
     }
 
 

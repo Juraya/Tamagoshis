@@ -23,6 +23,7 @@ public class GrosMangeur extends Tamagoshi {
         if (this.energy > 0 && this.fun > 0) {
             this.energy = this.energy - 2;
             this.fun = this.fun - 1;
+            this.getMaFrame().getContentPane().repaint();
             return true;
         }
 

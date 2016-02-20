@@ -42,12 +42,13 @@ public class TamaMenu extends JFrame {
 
         this.nouvellePartie.addActionListener(e -> {
             TamaGameGraphic partie = new TamaGameGraphic();
+            this.dispose();
         });
 
         this.nomsAuto.addItemListener(e -> menuActuel.getNomsAuto().setState(this.nomsAuto.getState()));
 
         menuActuel = this;
-        System.err.println("Menu terminé.");
+        //System.err.println("Menu terminé.");
     }
 
     public JMenuBar getBarreMenu() {

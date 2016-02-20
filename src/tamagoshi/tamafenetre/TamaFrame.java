@@ -18,10 +18,13 @@ public class TamaFrame extends JFrame {
     private ImageIcon iconeAttention = new ImageIcon(new ImageIcon(getClass().getResource("../../img/warning.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
     private ImageIcon iconeYoupi = new ImageIcon(new ImageIcon(getClass().getResource("../../img/overjoyed.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
 
+    private JPanel boutons = new JPanel();
+    private JPanel bullePanel = new JPanel();
     private JButton nourrir = new JButton();
     private JButton jouer = new JButton();
     private JLabel bulle = new JLabel();
     private JPanel etat = new JPanel();
+    private JLabel etatImg = new JLabel();
 
     public TamaFrame(Tamagoshi tamagoshi) {
 
@@ -37,24 +40,29 @@ public class TamaFrame extends JFrame {
 
         this.add(this.etat, BorderLayout.CENTER);
 
-        JPanel boutons = new JPanel();
         nourrir.setText("Nourrir");
 
 
         jouer.setText("Jouer");
         boutons.add(nourrir);
         boutons.add(jouer);
+        //this.add(fun, BorderLayout.SOUTH);
+        //this.add(faim, BorderLayout.SOUTH);
         this.add(boutons, BorderLayout.SOUTH);
 
+
         JPanel etat = new JPanel();
+        etat.add(etatImg);
 
 
         bulle.setIcon(bulleImg);
         bulle.setText(this.getMonTama().getEtat());
         bulle.setFont(myFont);
         bulle.setHorizontalTextPosition(SwingConstants.CENTER);
-        etat.add(bulle);
-        this.add(etat, BorderLayout.NORTH);
+        bullePanel.add(bulle);
+
+        this.add(bullePanel, BorderLayout.NORTH);
+        this.add(etat, BorderLayout.CENTER);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setTitle(this.getMonTama().getName());
@@ -150,5 +158,21 @@ public class TamaFrame extends JFrame {
 
     public void setEtat(JPanel etat) {
         this.etat = etat;
+    }
+
+    public JPanel getBoutons() {
+        return boutons;
+    }
+
+    public void setBoutons(JPanel boutons) {
+        this.boutons = boutons;
+    }
+
+    public JLabel getEtatImg() {
+        return etatImg;
+    }
+
+    public void setEtatImg(JLabel etatImg) {
+        this.etatImg = etatImg;
     }
 }

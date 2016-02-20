@@ -23,11 +23,12 @@ public class GrosJoueur extends Tamagoshi {
         if (this.energy > 0 && this.fun > 0) {
             this.energy = this.energy - 1;
             this.fun = this.fun - 2;
+            this.getMaFrame().getContentPane().repaint();
             return true;
         }
 
         else {
-            System.out.println(this.getName() + " : Je suis KO !");
+            //System.out.println(this.getName() + " : Je suis KO !");
             return false;
         }
     }

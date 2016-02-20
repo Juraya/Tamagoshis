@@ -1,5 +1,6 @@
 package tamagoshi.tamagoshis;
 
+import tamagoshi.jeu.TamaGameGraphic;
 import tamagoshi.tamafenetre.TamaFrame;
 
 import javax.swing.*;
@@ -82,8 +83,8 @@ public class Tamagoshi {
     public boolean jouer() {
         if(this.getFun() < this.getFunMax()) {
             //this.getMaFrame().getBulle().setText(this.etat="Je m'amuse trop !");
-            this.getMaFrame().getContentPane().repaint();
             this.fun += jetDes(1,3);
+            this.getMaFrame().getContentPane().repaint();
             return true;
         }
         else {
@@ -101,37 +102,37 @@ public class Tamagoshi {
     public boolean parle() {
         if (this.getEnergy() >= 5 && this.getFun() >= 5 ) {
             this.getMaFrame().getBulle().setText(this.etat="Je suis heureux !");
-            this.getMaFrame().getEtat().removeAll();
-            this.getMaFrame().getEtat().add(new JLabel(this.getMaFrame().getIconeYoupi()));
-            //this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeYoupi()));
-            this.getMaFrame().repaint();
+            this.getMaFrame().getEtatImg().setIcon(this.getMaFrame().getIconeYoupi());
+            this.getMaFrame().getContentPane().repaint();
             return true;
         }
 
         else if (this.getEnergy() >= 5 && this.getFun() < 5) {
             this.getMaFrame().getBulle().setText(this.etat="J'ai pas faim mais je m'ennuie !");
-            //this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeEnnui()));
-            this.getMaFrame().getEtat().removeAll();
-            this.getMaFrame().getEtat().add(new JLabel(this.getMaFrame().getIconeEnnui()));
-            this.getMaFrame().repaint();
+            this.getMaFrame().getEtatImg().setIcon(this.getMaFrame().getIconeEnnui());
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
 
         else if (this.getEnergy() < 5 && this.getFun() >= 5) {
             this.getMaFrame().getBulle().setText(this.etat="J'ai faim mais je m'amuse bien.");
-            //this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeAttention()));
-            this.getMaFrame().getEtat().removeAll();
-            this.getMaFrame().getEtat().add(new JLabel(this.getMaFrame().getIconeAttention()));
-            this.getMaFrame().repaint();
+            this.getMaFrame().getEtatImg().setIcon(this.getMaFrame().getIconeAttention());
+            this.getMaFrame().getContentPane().repaint();
+            return false;
+        }
+
+        else if (this.getEnergy() <= 0 | this.getFun() <= 0) {
+            this.getMaFrame().getBulle().setText(this.etat="Je suis KO !");
+            this.getMaFrame().getEtatImg().setIcon(this.getMaFrame().getIconeKO());
+            this.getMaFrame().remove(this.getMaFrame().getBoutons());
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
 
         else {
             this.getMaFrame().getBulle().setText(this.etat="J'ai faim et je m'ennuie !");
-            //this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeFaim()));
-            this.getMaFrame().getEtat().removeAll();
-            this.getMaFrame().getEtat().add(new JLabel(this.getMaFrame().getIconeFaim()));
-            this.getMaFrame().repaint();
+            this.getMaFrame().getEtatImg().setIcon(this.getMaFrame().getIconeFaim());
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
     }
@@ -154,6 +155,7 @@ public class Tamagoshi {
         else {
             //this.getMaFrame().getBulle().setText(this.etat="Je n'ai pas faim.");
             this.getMaFrame().getContentPane().repaint();
+
             return false;
         }
     }
@@ -171,12 +173,13 @@ public class Tamagoshi {
 
         else {
             this.getMaFrame().getBulle().setText(this.etat="Je suis KO !");
-            //this.getMaFrame().add(new JLabel(this.getMaFrame().getIconeKO()));
             this.getMaFrame().getEtat().removeAll();
             this.getMaFrame().getEtat().add(new JLabel(this.getMaFrame().getIconeKO()));
+            this.getMaFrame().remove(this.getMaFrame().getBoutons());
             this.getMaFrame().getJouer().setEnabled(false);
             this.getMaFrame().getNourrir().setEnabled(false);
             this.getMaFrame().getContentPane().repaint();
+            //TamaGameGraphic.tamaActuel.remove(this);
             return false;
         }
     }
