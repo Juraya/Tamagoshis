@@ -57,6 +57,7 @@ public class TamaFrame extends JFrame {
         this.add(etat, BorderLayout.NORTH);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setTitle(this.getMonTama().getName());
         this.setVisible(true);
 
         this.nourrir.addActionListener(e -> getMonTama().mange());

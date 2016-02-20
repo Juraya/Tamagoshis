@@ -1,17 +1,14 @@
 package tamagoshi.tamafenetre;
 
 import tamagoshi.jeu.TamaGameGraphic;
-import tamagoshi.tamagoshis.Tamagoshi;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Julien on 13/02/2016.
  */
 public class TamaMenu extends JFrame {
+    private static TamaMenu menuActuel;
     private JMenuBar barreMenu;
     private JMenu menuOptions;
     private JMenu menuPartie;
@@ -44,43 +41,56 @@ public class TamaMenu extends JFrame {
         this.setVisible(true);
 
         this.nouvellePartie.addActionListener(e -> {
-            String[] choix = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-            String difficulte = (String) JOptionPane.showInputDialog(null, "Choisissez la difficulté :", "Nombre de Tamagoshis", JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
-            int diffNb = Integer.parseInt(difficulte);
             TamaGameGraphic partie = new TamaGameGraphic();
-            //partie.initialisation();
-            //partie.play();
-            ArrayList<TamaFrame> tamaTab = new ArrayList<>();
-
-            int h = 0;
-            int l = 0;
-            int compteur = 0;
-            for (int i=0; i<diffNb; i++){
-                if (diffNb<=5) {
-                    Tamagoshi tamatest = new Tamagoshi();
-                    TamaFrame frameTest = new TamaFrame(tamatest);
-                    frameTest.setLocation(h, l);
-                    h = h + 405;
-
-                    tamatest.parle();
-                    tamaTab.add(frameTest);
-                }
-
-                else {
-                    if (compteur==5) {
-                        l = l+405;
-                        h = 0;
-                    }
-                    Tamagoshi tamatest = new Tamagoshi();
-                    TamaFrame frameTest = new TamaFrame(tamatest);
-                    frameTest.setLocation(h, l);
-                    h = h + 405;
-                    compteur+=1;
-
-                    tamatest.parle();
-                    tamaTab.add(frameTest);
-                }
-            }
         });
+
+        this.nomsAuto.addItemListener(e -> menuActuel.getNomsAuto().setState(this.nomsAuto.getState()));
+
+        menuActuel = this;
+        System.err.println("Menu terminé.");
+    }
+
+    public JMenuBar getBarreMenu() {
+        return barreMenu;
+    }
+
+    public void setBarreMenu(JMenuBar barreMenu) {
+        this.barreMenu = barreMenu;
+    }
+
+    public JMenu getMenuOptions() {
+        return menuOptions;
+    }
+
+    public void setMenuOptions(JMenu menuOptions) {
+        this.menuOptions = menuOptions;
+    }
+
+    public JMenu getMenuPartie() {
+        return menuPartie;
+    }
+
+    public void setMenuPartie(JMenu menuPartie) {
+        this.menuPartie = menuPartie;
+    }
+
+    public JCheckBoxMenuItem getNomsAuto() {
+        return nomsAuto;
+    }
+
+    public void setNomsAuto(JCheckBoxMenuItem nomsAuto) {
+        this.nomsAuto = nomsAuto;
+    }
+
+    public JMenuItem getNouvellePartie() {
+        return nouvellePartie;
+    }
+
+    public void setNouvellePartie(JMenuItem nouvellePartie) {
+        this.nouvellePartie = nouvellePartie;
+    }
+
+    public static TamaMenu getMenuActuel() {
+        return menuActuel;
     }
 }

@@ -1,10 +1,12 @@
 package tamagoshi.jeu;
 
+import tamagoshi.tamafenetre.TamaFrame;
 import tamagoshi.tamagoshis.GrosJoueur;
 import tamagoshi.tamagoshis.GrosMangeur;
 import tamagoshi.tamagoshis.Tamagoshi;
 import tamagoshi.util.Utilisateur;
 
+import javax.swing.*;
 import java.util.*;
 
 /**
@@ -80,43 +82,44 @@ public class TamaGame {
      * Enfin affiche que la création de Tamagoshis est terminée.
      */
     public void initialisation() {
-        System.out.println("Entrez le nombre de Tamagoshis desires : ");
-        String nbTama = Utilisateur.saisieClavier();
-        int nbTamaInt = 0;
-        if (nbTama != null) {
-            nbTamaInt = Integer.parseInt(nbTama);
-        }
-        for (int i = 0; i < nbTamaInt; i++) {
-            Random random = new Random();
-            int alea = random.nextInt(2) + 1;
+        String[] choix = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String difficulte = (String) JOptionPane.showInputDialog(null, "Choisissez la difficulté :", "Nombre de Tamagoshis", JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
+        int diffNb = Integer.parseInt(difficulte);
+        TamaGameGraphic partie = new TamaGameGraphic();
+        //partie.initialisation();
+        //partie.play();
+        ArrayList<TamaFrame> tamaTab = new ArrayList<>();
 
-            if (alea == 1) {
-                Tamagoshi tama = new Tamagoshi();
-                this.tamaDepart.add(tama);
-                this.tamaActuel.add(tama);
-                System.out.println("Nom du Tamagoshi cree : " + tama.getName());
-                System.out.println("Energie max : " + tama.getMaxEnergy() + " / " + "Fun max : " + tama.getFunMax());
+        int h = 0;
+        int l = 0;
+        int compteur = 0;
+        for (int i=0; i<diffNb; i++){
+            if (diffNb<=5) {
+                Tamagoshi tamatest = new Tamagoshi();
+                TamaFrame frameTest = new TamaFrame(tamatest);
+                frameTest.setLocation(h, l);
+                h = h + 405;
+
+                tamatest.parle();
+                tamaTab.add(frameTest);
             }
 
-            else if (alea == 2) {
-                alea = random.nextInt(2) + 1;
-                if (alea == 1) {
-                    GrosMangeur tama = new GrosMangeur();
-                    this.tamaDepart.add(tama);
-                    this.tamaActuel.add(tama);
-                    System.out.println("Nom du Tamagoshi cree : " + tama.getName());
-                    System.out.println("Energie max : " + tama.getMaxEnergy() + " / " + "Fun max : " + tama.getFunMax());
+            else {
+                if (compteur==5) {
+                    l = l+405;
+                    h = 0;
                 }
+                Tamagoshi tamatest = new Tamagoshi();
+                TamaFrame frameTest = new TamaFrame(tamatest);
+                frameTest.setLocation(h, l);
+                h = h + 405;
+                compteur+=1;
 
-                else {
-                    GrosJoueur tama = new GrosJoueur();
-                    this.tamaDepart.add(tama);
-                    this.tamaActuel.add(tama);
-                    System.out.println("Nom du Tamagoshi cree : " + tama.getName());
-                    System.out.println("Energie max : " + tama.getMaxEnergy() + " / " + "Fun max : " + tama.getFunMax());
-                }
+                tamatest.parle();
+                tamaTab.add(frameTest);
             }
         }
+
 
         System.out.println("Creation des Tamagoshis terminee !");
     }

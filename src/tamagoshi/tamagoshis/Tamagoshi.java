@@ -55,7 +55,7 @@ public class Tamagoshi {
     /**
      * Liste de noms destinée à la création aléatoire
      */
-    private List<String> listNoms = Arrays.asList("Tarbek", "Bulbizarre", "Salameche", "Carapuce", "Pikachu", "Racaillou", "Mew", "Mewtwo");
+    private List<String> listNoms = Arrays.asList("Tarbek", "Bulbizarre", "Salameche", "Carapuce", "Pikachu", "Racaillou", "Mew", "Mewtwo", "Gorlak", "Racaillechelou");
 
     /**
      * Constructeur de la classe Tamagoshi. Le seul paramètre à donner est le nom, le reste est déjà défini
@@ -81,13 +81,13 @@ public class Tamagoshi {
      */
     public boolean jouer() {
         if(this.getFun() < this.getFunMax()) {
-            this.getMaFrame().getBulle().setText(this.etat="Je m'amuse trop !");
+            //this.getMaFrame().getBulle().setText(this.etat="Je m'amuse trop !");
             this.getMaFrame().getContentPane().repaint();
             this.fun += jetDes(1,3);
             return true;
         }
         else {
-            this.getMaFrame().getBulle().setText(this.etat="Pas envie de jouer.");
+            //this.getMaFrame().getBulle().setText(this.etat="Pas envie de jouer.");
             this.getMaFrame().getContentPane().repaint();
             return false;
         }
@@ -146,13 +146,13 @@ public class Tamagoshi {
         //System.err.println(this.getEnergy());
         if (this.maxEnergy > this.energy) {
             this.energy += jetDes(1,3);
-            this.getMaFrame().getBulle().setText(this.etat="Miam !");
+            //this.getMaFrame().getBulle().setText(this.etat="Miam !");
             this.getMaFrame().getContentPane().repaint();
             return true;
         }
 
         else {
-            this.getMaFrame().getBulle().setText(this.etat="Je n'ai pas faim.");
+            //this.getMaFrame().getBulle().setText(this.etat="Je n'ai pas faim.");
             this.getMaFrame().getContentPane().repaint();
             return false;
         }
@@ -245,7 +245,7 @@ public class Tamagoshi {
      * Permet l'édition du nom du Tamagoshi
      * @param name Prend un string en paramètre pour redéfinir le nom du Tamagoshi.
      */
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -310,5 +310,13 @@ public class Tamagoshi {
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public List<String> getListNoms() {
+        return listNoms;
+    }
+
+    public void setListNoms(List<String> listNoms) {
+        this.listNoms = listNoms;
     }
 }
