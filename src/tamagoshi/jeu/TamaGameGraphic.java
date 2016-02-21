@@ -15,6 +15,7 @@ import java.util.*;
  * Created by Julien on 17/02/2016.
  */
 public class TamaGameGraphic {
+    private Clip clip;
     private int numeroTour;
     /**
      * Tableau de tamagoshis initial, servant de comparaison
@@ -24,15 +25,37 @@ public class TamaGameGraphic {
      * Tableau de tamagoshis actuel, servant à être édité
      */
     public static List<Tamagoshi> tamaActuel;
+    /**
+     * Le tableau de toutes les frames de jeu
+     */
+    private ArrayList<TamaFrame> tamaTab;
 
+    /**
+     * Méthode appelée quand le jeu doit se terminer
+     */
     public void resultat() {
+        for (TamaFrame t : tamaTab) {
+            t.dispose();
+        }
+
+        this.clip.stop();
+
+        StringBuilder messageFin = new StringBuilder();
+
         // Recapitulatif des types de Tamagoshis
         for (Tamagoshi aTamaDepart : tamaDepart) {
             if (aTamaDepart instanceof GrosJoueur) {
-                System.out.println(aTamaDepart.getName() + " : " + "Ce Tamagoshi etait un gros joueur !");
+                messageFin.append(aTamaDepart.getName()).append(" : ").append("Ce Tamagoshi etait un gros joueur !");
+                messageFin.append("\n");
             }
-            else if (aTamaDepart instanceof  GrosMangeur) {
-                System.out.println(aTamaDepart.getName() + " : " + "Ce Tamagoshi etait un gros mangeur !");
+            else if (aTamaDepart instanceof GrosMangeur) {
+                messageFin.append(aTamaDepart.getName()).append(" : ").append("Ce Tamagoshi etait un gros mangeur !");
+                messageFin.append("\n");
+            }
+            else {
+
+                messageFin.append(aTamaDepart.getName()).append(" : ").append("Ce Tamagoshi etait normal !");
+                messageFin.append("\n");
             }
         }
 
@@ -41,9 +64,14 @@ public class TamaGameGraphic {
         double nbTotal = tamaDepart.size();
         double score = nbVivants / nbTotal * 100;
 
-        // Affichage du score
-        System.out.println("***** " + "Score : " + score + " % !" + " *****");
-        System.out.println("Difficulte : "+tamaDepart.size());
+        messageFin.append("Score final : ").append(score).append(" % !").append("\n").append("\n");
+        messageFin.append("Difficulté : ").append(tamaDepart.size());
+
+        JOptionPane.showMessageDialog(
+                null,
+                messageFin,
+                "Fin du jeu",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     public TamaGameGraphic() {
@@ -52,6 +80,24 @@ public class TamaGameGraphic {
         initialisation();
     }
 
+    /**
+     * Méthode permettant une création aléatoire de Tamagoshis
+     * @return Renvoie un Tamagoshi de type aléatoire.
+     */
+    public Tamagoshi getRandomTama(){
+        Random creationAlea = new Random();
+        int randomInt = creationAlea.nextInt(3);
+        switch(randomInt) {
+            case 0: return new Tamagoshi();
+            case 1: return new GrosMangeur();
+            case 2: return new GrosJoueur();
+        }
+        return null;
+    }
+
+    /**
+     * Construction de tous les éléments de jeu
+     */
     public void initialisation() {
         // Création de la fenêtre pour choisir la difficulté
         System.err.println("Initialisation de la partie.");
@@ -68,38 +114,41 @@ public class TamaGameGraphic {
         } catch (UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
-        Clip clip = null;
+        this.clip = null;
         try {
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
+            this.clip = AudioSystem.getClip();
+            this.clip.open(audioInputStream);
         } catch (LineUnavailableException | IOException e) {
             e.printStackTrace();
         }
 
-        if (clip != null) {
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        if (this.clip != null) {
+            this.clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
 
-        ArrayList<TamaFrame> tamaTab = new ArrayList<>();
+        tamaTab = new ArrayList<>();
 
         int h = 0;
         int l = 0;
         int compteur = 0;
         for (int i=0; i<diffNb; i++){
             if (diffNb<=5) {
-                Tamagoshi tamatest = new Tamagoshi();
+                Tamagoshi t = this.getRandomTama();
+                System.err.println(t.getClass());
+                tamaActuel.add(t);
+                tamaDepart.add(t);
                 if (TamaMenu.getMenuActuel().getNomsAuto().getState()) {
-                    tamatest.setName(tamatest.getListNoms().get(i));
+                    t.setName(t.getListNoms().get(i));
                 }
                 else if (!TamaMenu.getMenuActuel().getNomsAuto().getState()) {
                     String nomVoulu = JOptionPane.showInputDialog(null, "Choisissez le nom du Tamagoshi :", "Nom du Tamagoshi", JOptionPane.QUESTION_MESSAGE);
-                    tamatest.setName(nomVoulu);
+                    t.setName(nomVoulu);
                 }
-                    TamaFrame frameTest = new TamaFrame(tamatest);
+                    TamaFrame frameTest = new TamaFrame(t);
                     frameTest.setLocation(h, l);
                     h = h + 390;
 
-                    tamatest.parle();
+                    t.parle();
                     tamaTab.add(frameTest);
             }
 
@@ -108,20 +157,23 @@ public class TamaGameGraphic {
                     l = l + 400;
                     h = 0;
                 }
-                Tamagoshi tamatest = new Tamagoshi();
+                Tamagoshi t = this.getRandomTama();
+                System.err.println(t.getClass());
+                tamaActuel.add(t);
+                tamaDepart.add(t);
                 if (TamaMenu.getMenuActuel().getNomsAuto().getState()) {
-                    tamatest.setName(tamatest.getListNoms().get(i));
+                    t.setName(t.getListNoms().get(i));
                 }
                 else if (!TamaMenu.getMenuActuel().getNomsAuto().getState()) {
                     String nomVoulu = JOptionPane.showInputDialog(null, "Choisissez le nom du Tamagoshi :", "Nom du Tamagoshi", JOptionPane.QUESTION_MESSAGE);
-                    tamatest.setName(nomVoulu);
+                    t.setName(nomVoulu);
                 }
-                    TamaFrame frameTest = new TamaFrame(tamatest);
+                    TamaFrame frameTest = new TamaFrame(t);
                     frameTest.setLocation(h, l);
                     h = h + 390;
                     compteur += 1;
 
-                    tamatest.parle();
+                    t.parle();
                     tamaTab.add(frameTest);
             }
 
@@ -131,6 +183,7 @@ public class TamaGameGraphic {
                         tama.getMonTama().jouer();
                         for (TamaFrame t : tamaTab) {
                             t.getJouer().setEnabled(false);
+                            t.getMonTama().parle();
                         }
                     }
 
@@ -138,14 +191,15 @@ public class TamaGameGraphic {
                         for (TamaFrame t : tamaTab) {
                             t.getJouer().setEnabled(true);
                             t.getNourrir().setEnabled(true);
+                            t.getMonTama().parle();
                         }
-                        //this.numeroTour+=1;
-                        //System.err.println(this.numeroTour);
-
                     }
                 });
                 tama.getNourrir().addActionListener(e -> {
-                    if (tama.getJouer().isEnabled()) {
+                    if (this.numeroTour == 10) {
+                        this.resultat();
+                    }
+                    else if (tama.getJouer().isEnabled()) {
                         tama.getMonTama().mange();
                         for (TamaFrame t : tamaTab) {
                             t.getNourrir().setEnabled(false);
@@ -171,14 +225,6 @@ public class TamaGameGraphic {
                 });
             }
 
-            this.play();
         }
     }
-
-    public void play() {
-        System.err.println("Lancement de la partie.");
-
-    }
-
-
 }

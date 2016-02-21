@@ -1,5 +1,9 @@
 package tamagoshi.tamagoshis;
 
+import tamagoshi.jeu.TamaGameGraphic;
+
+import javax.swing.*;
+
 /**
  * Created by Julien on 07/10/2015.
  * Classe de Tamagoshi gros mangeur, qui hérite de Tamagoshi.
@@ -28,7 +32,13 @@ public class GrosMangeur extends Tamagoshi {
         }
 
         else {
-            System.out.println(this.getName() + " : Je suis KO !");
+            this.getMaFrame().getBulle().setText(this.etat="Je suis KO !");
+            this.getMaFrame().getEtat().removeAll();
+            this.getMaFrame().getEtat().add(new JLabel(this.getMaFrame().getIconeKO()));
+            this.getMaFrame().remove(this.getMaFrame().getBoutons());
+            this.getMaFrame().getJouer().setEnabled(false);
+            this.getMaFrame().getNourrir().setEnabled(false);
+            this.getMaFrame().getContentPane().repaint();
             return false;
         }
     }

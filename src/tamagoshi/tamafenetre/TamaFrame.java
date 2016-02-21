@@ -11,12 +11,12 @@ import java.awt.*;
 public class TamaFrame extends JFrame {
 
     private Tamagoshi monTama;
-    private ImageIcon iconeFaim = new ImageIcon(new ImageIcon(getClass().getResource("../../img/hungry.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-    private ImageIcon iconeEnnui = new ImageIcon(new ImageIcon(getClass().getResource("../../img/bored.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-    private ImageIcon iconeJoie = new ImageIcon(new ImageIcon(getClass().getResource("../../img/happy.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-    private ImageIcon iconeKO = new ImageIcon(new ImageIcon(getClass().getResource("../../img/KO.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-    private ImageIcon iconeAttention = new ImageIcon(new ImageIcon(getClass().getResource("../../img/warning.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
-    private ImageIcon iconeYoupi = new ImageIcon(new ImageIcon(getClass().getResource("../../img/overjoyed.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeFaim = new ImageIcon(new ImageIcon(getClass().getResource("/img/hungry.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeEnnui = new ImageIcon(new ImageIcon(getClass().getResource("/img/bored.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeJoie = new ImageIcon(new ImageIcon(getClass().getResource("/img/happy.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeKO = new ImageIcon(new ImageIcon(getClass().getResource("/img/KO.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeAttention = new ImageIcon(new ImageIcon(getClass().getResource("/img/warning.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+    private ImageIcon iconeYoupi = new ImageIcon(new ImageIcon(getClass().getResource("/img/overjoyed.gif")).getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
 
     private JPanel boutons = new JPanel();
     private JPanel bullePanel = new JPanel();

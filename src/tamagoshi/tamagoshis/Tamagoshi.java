@@ -82,13 +82,11 @@ public class Tamagoshi {
      */
     public boolean jouer() {
         if(this.getFun() < this.getFunMax()) {
-            //this.getMaFrame().getBulle().setText(this.etat="Je m'amuse trop !");
             this.fun += jetDes(1,3);
             this.getMaFrame().getContentPane().repaint();
             return true;
         }
         else {
-            //this.getMaFrame().getBulle().setText(this.etat="Pas envie de jouer.");
             this.getMaFrame().getContentPane().repaint();
             return false;
         }
@@ -122,6 +120,7 @@ public class Tamagoshi {
         }
 
         else if (this.getEnergy() <= 0 | this.getFun() <= 0) {
+            TamaGameGraphic.tamaActuel.remove(this);
             this.getMaFrame().getBulle().setText(this.etat="Je suis KO !");
             this.getMaFrame().getEtatImg().setIcon(this.getMaFrame().getIconeKO());
             this.getMaFrame().remove(this.getMaFrame().getBoutons());
@@ -143,19 +142,12 @@ public class Tamagoshi {
      * @return Renvoie un boolean. True : Il accepte de manger. False : Il n'a pas faim.
      */
     public boolean mange() {
-        //System.err.println("CLICK MANGER");
-        //System.err.println(this.getEnergy());
         if (this.maxEnergy > this.energy) {
             this.energy += jetDes(1,3);
-            //this.getMaFrame().getBulle().setText(this.etat="Miam !");
-            this.getMaFrame().getContentPane().repaint();
             return true;
         }
 
         else {
-            //this.getMaFrame().getBulle().setText(this.etat="Je n'ai pas faim.");
-            this.getMaFrame().getContentPane().repaint();
-
             return false;
         }
     }
@@ -179,7 +171,6 @@ public class Tamagoshi {
             this.getMaFrame().getJouer().setEnabled(false);
             this.getMaFrame().getNourrir().setEnabled(false);
             this.getMaFrame().getContentPane().repaint();
-            //TamaGameGraphic.tamaActuel.remove(this);
             return false;
         }
     }
