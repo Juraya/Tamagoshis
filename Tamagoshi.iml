@@ -25,5 +25,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="JavaDoc_Tamagoshi_private" level="project" />
   </component>
 </module>

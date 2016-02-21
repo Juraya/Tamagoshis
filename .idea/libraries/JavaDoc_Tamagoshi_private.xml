@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="JavaDoc_Tamagoshi_private">
+    <CLASSES />
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/JavaDoc/JavaDoc_Tamagoshi_private" />
+      <root url="file://$PROJECT_DIR$/JavaDoc/JavaDoc_Tamagoshi_public" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
