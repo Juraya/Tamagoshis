@@ -14,9 +14,7 @@ public class GrosJoueur extends Tamagoshi {
      * Constructeur de la classe Tamagoshi. Le seul paramètre à donner est le nom, le reste est déjà défini
      * ou aléatoire.
      */
-    public GrosJoueur() {
-
-    }
+    public GrosJoueur(){}
 
     /**
      * Méthode de consommation de ressources spécifique au gros joueur : il perd 2 points de fun par tour.

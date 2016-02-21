@@ -34,11 +34,7 @@ public class TamaGameGraphic {
      * Méthode appelée quand le jeu doit se terminer
      */
     public void resultat() {
-        for (TamaFrame t : tamaTab) {
-            t.dispose();
-        }
-
-        this.clip.stop();
+        //this.clip.stop();
 
         StringBuilder messageFin = new StringBuilder();
 
@@ -72,8 +68,15 @@ public class TamaGameGraphic {
                 messageFin,
                 "Fin du jeu",
                 JOptionPane.INFORMATION_MESSAGE);
+
+        for (TamaFrame t : tamaTab) {
+            t.dispose();
+        }
     }
 
+    /**
+     * Constructeur qui initialise les tableaux de Tamagoshis
+     */
     public TamaGameGraphic() {
         tamaDepart = new ArrayList<>();
         tamaActuel = new ArrayList<>();
@@ -108,6 +111,7 @@ public class TamaGameGraphic {
         /**
          * Lancement de la musique
          */
+        /*
         AudioInputStream audioInputStream = null;
         try {
             audioInputStream = AudioSystem.getAudioInputStream(new File(Main.class.getResource("/music/pokemon.wav").getFile()));
@@ -125,7 +129,7 @@ public class TamaGameGraphic {
         if (this.clip != null) {
             this.clip.loop(Clip.LOOP_CONTINUOUSLY);
         }
-
+        */
         tamaTab = new ArrayList<>();
 
         int h = 0;
@@ -220,11 +224,9 @@ public class TamaGameGraphic {
                                 + " / Fun : " + ta.getMonTama().getFun());
                             }
                         }
-
                     }
                 });
             }
-
         }
     }
 }

@@ -15,6 +15,9 @@ public class TamaMenu extends JFrame {
     private JCheckBoxMenuItem nomsAuto;
     private JMenuItem nouvellePartie;
 
+    /**
+     * Constructeur du menu principal
+     */
     public TamaMenu() {
         this.barreMenu = new JMenuBar();
         this.menuOptions = new JMenu();
@@ -48,7 +51,6 @@ public class TamaMenu extends JFrame {
         this.nomsAuto.addItemListener(e -> menuActuel.getNomsAuto().setState(this.nomsAuto.getState()));
 
         menuActuel = this;
-        //System.err.println("Menu terminé.");
     }
 
     public JMenuBar getBarreMenu() {

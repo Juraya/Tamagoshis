@@ -14,9 +14,7 @@ public class GrosMangeur extends Tamagoshi {
      * Constructeur de la classe Tamagoshi. Le seul paramètre à donner est le nom, le reste est déjà défini
      * ou aléatoire.
      */
-    public GrosMangeur() {
-
-    }
+    public GrosMangeur(){}
 
     /**
      * Méthode de consommation de ressources spécifique au gros mangeur : il perd 2 points de vie par tour.

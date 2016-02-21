@@ -5,7 +5,6 @@ import tamagoshi.tamagoshis.GrosJoueur;
 import tamagoshi.tamagoshis.GrosMangeur;
 import tamagoshi.tamagoshis.Tamagoshi;
 import tamagoshi.util.Utilisateur;
-
 import javax.swing.*;
 import java.util.*;
 
@@ -47,6 +46,9 @@ public class TamaGame {
         System.out.println("Difficulte : "+tamaDepart.size());
     }
 
+    /**
+     * Propose la liste des Tamagoshis pour jouer
+     */
     public void afficherFun() {
         System.out.println("Jouer avec quel Tamagoshi ?");
         for (Tamagoshi aTamaActuel : tamaActuel) {
@@ -56,6 +58,9 @@ public class TamaGame {
         }
     }
 
+    /**
+     * Propose la liste des Tamagoshis pour manger
+     */
     public void afficherFaim() {
         System.out.println("Nourrir quel Tamagoshi ?");
         for (Tamagoshi aTamaActuel : tamaActuel) {
@@ -86,8 +91,6 @@ public class TamaGame {
         String difficulte = (String) JOptionPane.showInputDialog(null, "Choisissez la difficulté :", "Nombre de Tamagoshis", JOptionPane.QUESTION_MESSAGE, null, choix, choix[0]);
         int diffNb = Integer.parseInt(difficulte);
         TamaGameGraphic partie = new TamaGameGraphic();
-        //partie.initialisation();
-        //partie.play();
         ArrayList<TamaFrame> tamaTab = new ArrayList<>();
 
         int h = 0;

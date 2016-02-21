@@ -1,7 +1,6 @@
 package tamagoshi.tamafenetre;
 
 import tamagoshi.tamagoshis.Tamagoshi;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -26,28 +25,28 @@ public class TamaFrame extends JFrame {
     private JPanel etat = new JPanel();
     private JLabel etatImg = new JLabel();
 
+    /**
+     * Construit une frame en lui passant son Tamagoshi en paramètre
+     * @param tamagoshi Objet tamagoshi à relier à la frame
+     */
     public TamaFrame(Tamagoshi tamagoshi) {
 
         /**
-         * On fait la r�f�rence au Tamagoshi
+         * On fait la référence au Tamagoshi
          */
         this.setMonTama(tamagoshi);
         tamagoshi.setMaFrame(this);
 
         this.setSize(400, 400);
-        ImageIcon bulleImg = new ImageIcon(new ImageIcon(getClass().getResource("../../img/bulle_2.png")).getImage().getScaledInstance(390, 80, Image.SCALE_DEFAULT));
+        ImageIcon bulleImg = new ImageIcon(new ImageIcon(getClass().getResource("/img/bulle_2.png")).getImage().getScaledInstance(390, 80, Image.SCALE_DEFAULT));
         Font myFont = new Font("Serif", Font.BOLD, 18);
 
         this.add(this.etat, BorderLayout.CENTER);
 
         nourrir.setText("Nourrir");
-
-
         jouer.setText("Jouer");
         boutons.add(nourrir);
         boutons.add(jouer);
-        //this.add(fun, BorderLayout.SOUTH);
-        //this.add(faim, BorderLayout.SOUTH);
         this.add(boutons, BorderLayout.SOUTH);
 
 
